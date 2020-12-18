@@ -12,6 +12,11 @@ def methodB(n):
         print((n/2)*sumB)
     else :
         print((math.floor(n/2)*sumB + math.ceil(n/2)))
+
+def methodC(n):
+    sumC = 1+n
+    print( sumC*n/2)
         
 methodA(100)
 methodB(100)
+methodC(100)
