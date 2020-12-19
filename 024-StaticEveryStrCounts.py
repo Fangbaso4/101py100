@@ -18,6 +18,6 @@ def methodB(n):
         print("字符：{}，出现次数{}。".format(i,listB.count(i)))
     
         
-methodA("")        
+methodA("")
 methodB("")
 
