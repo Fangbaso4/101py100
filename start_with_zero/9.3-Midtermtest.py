@@ -34,8 +34,9 @@ for num in range(len(record)):
         score.append("平均分")
     # score = ' '.join(score)
     result.append(score)
-scores = result[0:1]+ sorted(result[1:-1],key=takeLastSecond,reverse=True)
-print(scores)
+# print(len(result))
+scores = result[0:1]+ sorted(result[1:],key=takeLastSecond,reverse=True)
+# print(len(scores))
 
 #计算每一学科的平均值
 def flaten(array):
@@ -61,15 +62,19 @@ for i in range(len(score)):
         for j in range(len(subject)):
             if j > 0:
                 sumsubj = sumsubj + int(subject[j])
+                # 替换不及格分数
+                if int(scores[j][i]) <60:
+                    scores[j].insert(i,"不及格")
+                    del scores[j][i+1]
         avgsubj.append(str(round(sumsubj/(len(subject)-1))))
     else :
         avgsubj.append('平均')
-
-print(avgsubj)
+    # print(subject)
+# print(avgsubj)
+scores.insert(1,avgsubj)
+# print(scores)
 
 #添加名次
-scores.insert(1,avgsubj)
-print(scores)
 listscore = []
 for i in range(len(scores)):
     if i > 0:
@@ -77,9 +82,10 @@ for i in range(len(scores)):
     else :
         scores[i].insert(0,"名次")
     listscore.append(' '.join(scores[i]))
-    # listscore.append(''.join(str(scores[i])))
-    # listscore.append(str(' '.join(scores[i])))
-print(listscore)
+# print(listscore)
+
+
+
 # 将处理后的成绩另存为一个新文件（result.txt）    
 f = open("report2.txt",'w',encoding='utf-8')
 for i in range(len(listscore)):
